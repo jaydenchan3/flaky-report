@@ -29,9 +29,11 @@ def main(argv=None):
         print(f"error: {args.directory} is not a directory", file=sys.stderr)
         return 2
 
-    runs, skipped = load_runs(args.directory)
+    runs, skipped, empty = load_runs(args.directory)
     for path, reason in skipped:
         print(f"WARNING: skipped {path.name}: {reason}", file=sys.stderr)
+    for path in empty:
+        print(f"WARNING: {path.name} contained no testcases", file=sys.stderr)
 
     total_files = len(runs) + len(skipped)
     if total_files == 0:

@@ -81,3 +81,12 @@ def test_missing_directory_is_an_error():
     result = run_cli("no-such-dir")
     assert result.returncode == 2
     assert "not a directory" in result.stderr
+
+
+def test_valid_xml_with_no_testcases_is_counted_but_warned(tmp_path):
+    (tmp_path / "run-a.xml").write_text((ROOT / "runs" / "run-001.xml").read_text())
+    (tmp_path / "run-b.xml").write_text("<testsuites></testsuites>")
+    result = run_cli(str(tmp_path))
+    assert result.returncode == 0
+    assert "WARNING: run-b.xml contained no testcases" in result.stderr
+    assert "Read 2 of 2 files" in result.stdout
