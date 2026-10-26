@@ -1,13 +1,13 @@
 # Scratch notes
 
 ## Done means
-`python -m flakyreport runs/` prints the flaky tests: name, passes, fails, flake rate,
-sorted worst first. Exits non-zero (or warns) on unreadable files instead of crashing.
+`python -m flakyreport runs/` prints the flaky tests: name, passes, fails, fail rate,
+sorted worst first. Warns and skips unreadable files (exit 0) instead of crashing.
 
 Definition (the core judgment call; write it in the README):
 - Flaky = passed at least once AND failed at least once across runs
 - Always failing = broken, NOT flaky. Report it separately.
-- Test identity = classname + name
+- Test identity = (classname, name) tuple
 - Outcome per JUnit: <failure> or <error> = fail, <skipped> = skip, otherwise pass
   (so <system-out> on a passing test doesn't create a false flaky)
 - Skips are not counted as a pass or a fail
@@ -39,7 +39,7 @@ So: parser + tests on the real files first.
 - A category resting on only one or two counted runs (see the skips column) is weak evidence.
 - Broken tests with changing error messages may be hiding instability (pagination_boundary and
   concurrent_edit_conflict fail 8/8 with five different messages).
-- 1 failure out of 8 is weak evidence; with this few runs, low flake rates should be read with caution.
+- 1 failure out of 8 is weak evidence; with this few runs, low fail rates should be read with caution.
 - Failures sharing the same messages (503, connection refused to localhost:5000, stale element)
   point to environment problems, so grouping by message is a "with more time" item.
 - Hand count vs tool: my first hand-count table said "the 9 others" stable; cross-checking against the
