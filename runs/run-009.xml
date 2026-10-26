@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="pytest" tests="4" failures="1">
+    <testcase classname="tests.test_auth" name="test_login_valid_credentials" time="0.11"/>
+    <testcase classname="tests.test_auth" name="test_session_expires" time="0.22">
+      <failure message="assert 3 == 4" type="AssertionError">AssertionError</failure>

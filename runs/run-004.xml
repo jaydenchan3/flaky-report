@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="pytest" errors="0" failures="3" skipped="0" tests="18" time="22.397" timestamp="2026-10-14T04:14:22.118273" hostname="ci-runner-2">
+    <testcase classname="tests.test_auth" name="test_login_valid_credentials" time="0.427"/>
+    <testcase classname="tests.test_auth" name="test_login_rejects_bad_password" time="0.749"/>
+    <testcase classname="tests.test_auth" name="test_session_expires" time="0.11"/>
+    <testcase classname="tests.test_worklist" name="test_filter_by_modality" time="4.408"/>
+    <testcase classname="tests.test_worklist" name="test_filter_by_date_range" time="5.12"/>
+    <testcase classname="tests.test_worklist" name="test_empty_worklist_renders" time="3.927"/>
+    <testcase classname="tests.test_worklist" name="test_pagination_boundary" time="1.21">
+      <failure message="HTTPConnectionPool(host='localhost', port=5000): Max retries exceeded" type="ConnectionError">ConnectionError: HTTPConnectionPool(host='localhost', port=5000): Max retries exceeded</failure>
+    </testcase>
+    <testcase classname="tests.test_report" name="test_submit_report" time="2.173"/>
+    <testcase classname="tests.test_report" name="test_report_requires_signature" time="0.846"/>
+    <testcase classname="tests.test_report" name="test_concurrent_edit_conflict" time="3.755">
+      <failure message="HTTPConnectionPool(host='localhost', port=5000): Max retries exceeded" type="ConnectionError">ConnectionError: HTTPConnectionPool(host='localhost', port=5000): Max retries exceeded</failure>
+    </testcase>
+    <testcase classname="tests.test_viewer" name="test_study_loads" time="0.767"/>
+    <testcase classname="tests.test_viewer" name="test_priors_appear" time="2.898">
+      <failure message="Message: stale element reference: element is not attached" type="StaleElementReferenceException">StaleElementReferenceException: Message: stale element reference: element is not attached</failure>
+    </testcase>
+    <testcase classname="tests.test_api" name="test_studies_endpoint_200" time="0.42"/>
+    <testcase classname="tests.test_api" name="test_studies_endpoint_pagination" time="0.567"/>
+    <testcase classname="tests.test_api" name="test_rate_limit_backoff" time="0.765"/>
+    <testcase classname="tests.test_api" name="test_unauthorized_returns_401" time="0.823"/>
+    <testcase classname="tests.test_export" name="test_export_dicom" time="3.408"/>
+    <testcase classname="tests.test_export" name="test_export_pdf" time="2.886"/>
+  </testsuite>
+</testsuites>

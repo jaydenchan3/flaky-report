@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="pytest" errors="0" failures="3" skipped="0" tests="18" time="20.723" timestamp="2026-10-17T07:14:22.118273" hostname="ci-runner-2">
+    <testcase classname="tests.test_auth" name="test_login_valid_credentials" time="0.182"/>
+    <testcase classname="tests.test_auth" name="test_login_rejects_bad_password" time="0.125"/>
+    <testcase classname="tests.test_auth" name="test_session_expires" time="0.33"/>
+    <testcase classname="tests.test_worklist" name="test_filter_by_modality" time="2.767"/>
+    <testcase classname="tests.test_worklist" name="test_filter_by_date_range" time="3.294"/>
+    <testcase classname="tests.test_worklist" name="test_empty_worklist_renders" time="3.23"/>
+    <testcase classname="tests.test_worklist" name="test_pagination_boundary" time="3.948">
+      <failure message="Message: stale element reference: element is not attached" type="StaleElementReferenceException">StaleElementReferenceException: Message: stale element reference: element is not attached</failure>
+    </testcase>
+    <testcase classname="tests.test_report" name="test_submit_report" time="3.352"/>
+    <testcase classname="tests.test_report" name="test_report_requires_signature" time="3.651"/>
+    <testcase classname="tests.test_report" name="test_concurrent_edit_conflict" time="1.524">
+      <failure message="assert 3 == 4" type="AssertionError">AssertionError: assert 3 == 4</failure>
+    </testcase>
+    <testcase classname="tests.test_viewer" name="test_study_loads" time="6.172"/>
+    <testcase classname="tests.test_viewer" name="test_priors_appear" time="1.166">
+      <failure message="Message: stale element reference: element is not attached" type="StaleElementReferenceException">StaleElementReferenceException: Message: stale element reference: element is not attached</failure>
+    </testcase>
+    <testcase classname="tests.test_viewer" name="test_zoom_persists" time="1.288"/>
+    <testcase classname="tests.test_api" name="test_studies_endpoint_200" time="0.088"/>
+    <testcase classname="tests.test_api" name="test_studies_endpoint_pagination" time="0.236"/>
+    <testcase classname="tests.test_api" name="test_rate_limit_backoff" time="0.76"/>
+    <testcase classname="tests.test_api" name="test_unauthorized_returns_401" time="0.399"/>
+    <testcase classname="tests.test_export" name="test_export_pdf" time="1.712"/>
+  </testsuite>
+</testsuites>

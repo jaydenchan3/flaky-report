@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="pytest" errors="0" failures="3" skipped="0" tests="18" time="24.015" timestamp="2026-10-11T01:14:22.118273" hostname="ci-runner-2">
+    <testcase classname="tests.test_auth" name="test_login_valid_credentials" time="0.897"/>
+    <testcase classname="tests.test_auth" name="test_login_rejects_bad_password" time="0.797"/>
+    <testcase classname="tests.test_auth" name="test_session_expires" time="0.417">
+      <failure message="assert 3 == 4" type="AssertionError">AssertionError: assert 3 == 4</failure>
+    </testcase>
+    <testcase classname="tests.test_worklist" name="test_filter_by_modality" time="1.432"/>
+    <testcase classname="tests.test_worklist" name="test_filter_by_date_range" time="2.551"/>
+    <testcase classname="tests.test_worklist" name="test_empty_worklist_renders" time="5.676"/>
+    <testcase classname="tests.test_worklist" name="test_pagination_boundary" time="1.587">
+      <failure message="Message: timeout: Expected condition failed: waiting for element" type="TimeoutException">TimeoutException: Message: timeout: Expected condition failed: waiting for element</failure>
+    </testcase>
+    <testcase classname="tests.test_report" name="test_submit_report" time="5.569"/>
+    <testcase classname="tests.test_report" name="test_report_requires_signature" time="0.336"/>
+    <testcase classname="tests.test_report" name="test_concurrent_edit_conflict" time="3.134">
+      <failure message="assert response.status_code == 200\nE       assert 503 == 200" type="AssertionError">AssertionError: assert response.status_code == 200\nE       assert 503 == 200</failure>
+    </testcase>
+    <testcase classname="tests.test_viewer" name="test_study_loads" time="2.499"/>
+    <testcase classname="tests.test_viewer" name="test_priors_appear" time="5.021"/>
+    <testcase classname="tests.test_api" name="test_studies_endpoint_200" time="0.564"/>
+    <testcase classname="tests.test_api" name="test_studies_endpoint_pagination" time="0.498"/>
+    <testcase classname="tests.test_api" name="test_rate_limit_backoff" time="0.06"/>
+    <testcase classname="tests.test_api" name="test_unauthorized_returns_401" time="0.057"/>
+    <testcase classname="tests.test_export" name="test_export_dicom" time="4.054"/>
+    <testcase classname="tests.test_export" name="test_export_pdf" time="6.135"/>
+  </testsuite>
+</testsuites>

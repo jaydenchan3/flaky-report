@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+  <testsuite name="pytest" errors="0" failures="5" skipped="0" tests="18" time="18.505" timestamp="2026-10-16T06:14:22.118273" hostname="ci-runner-1">
+    <testcase classname="tests.test_auth" name="test_login_valid_credentials" time="0.274"/>
+    <testcase classname="tests.test_auth" name="test_login_rejects_bad_password" time="0.801"/>
+    <testcase classname="tests.test_auth" name="test_session_expires" time="0.195">
+      <failure message="Message: stale element reference: element is not attached" type="StaleElementReferenceException">StaleElementReferenceException: Message: stale element reference: element is not attached</failure>
+    </testcase>
+    <testcase classname="tests.test_worklist" name="test_filter_by_modality" time="3.386"/>
+    <testcase classname="tests.test_worklist" name="test_filter_by_date_range" time="2.546"/>
+    <testcase classname="tests.test_worklist" name="test_empty_worklist_renders" time="6.358"/>
+    <testcase classname="tests.test_worklist" name="test_pagination_boundary" time="4.835">
+      <failure message="assert response.status_code == 200\nE       assert 503 == 200" type="AssertionError">AssertionError: assert response.status_code == 200\nE       assert 503 == 200</failure>
+    </testcase>
+    <testcase classname="tests.test_report" name="test_submit_report" time="3.866"/>
+    <testcase classname="tests.test_report" name="test_report_requires_signature" time="5.466"/>
+    <testcase classname="tests.test_report" name="test_concurrent_edit_conflict" time="3.144">
+      <failure message="Message: stale element reference: element is not attached" type="StaleElementReferenceException">StaleElementReferenceException: Message: stale element reference: element is not attached</failure>
+    </testcase>
+    <testcase classname="tests.test_viewer" name="test_study_loads" time="0.701"/>
+    <testcase classname="tests.test_viewer" name="test_priors_appear" time="1.24">
+      <failure message="HTTPConnectionPool(host='localhost', port=5000): Max retries exceeded" type="ConnectionError">ConnectionError: HTTPConnectionPool(host='localhost', port=5000): Max retries exceeded</failure>
+    </testcase>
+    <testcase classname="tests.test_viewer" name="test_zoom_persists" time="2.82"/>
+    <testcase classname="tests.test_api" name="test_studies_endpoint_200" time="0.735"/>
+    <testcase classname="tests.test_api" name="test_studies_endpoint_pagination" time="0.751"/>
+    <testcase classname="tests.test_api" name="test_rate_limit_backoff" time="0.458">
+      <failure message="Message: stale element reference: element is not attached" type="StaleElementReferenceException">StaleElementReferenceException: Message: stale element reference: element is not attached</failure>
+    </testcase>
+    <testcase classname="tests.test_api" name="test_unauthorized_returns_401" time="0.118"/>
+    <testcase classname="tests.test_export" name="test_export_pdf" time="6.31"/>
+  </testsuite>
+</testsuites>
