@@ -50,3 +50,5 @@ So: parser + tests on the real files first.
 - Flaky order: priors_appear 5/8, session_expires 3/8, then 12.5%: test_api.test_rate_limit_backoff,
   test_report.test_report_requires_signature, test_worklist.test_filter_by_date_range
 - Broken: test_report.test_concurrent_edit_conflict, test_worklist.test_pagination_boundary
+- Fail-to-pass (slice 3): letting ParseError escape the loader made 7 end-to-end tests fail
+  (crash on run-009 instead of warn-and-skip).

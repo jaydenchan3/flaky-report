@@ -21,3 +21,21 @@ def parse_file(path):
             outcome = "pass"
         results.append((test_id, outcome))
     return results
+
+
+def load_runs(directory):
+    """Parse every *.xml file in directory.
+
+    Returns (runs, skipped): runs is one parse_file() result per readable file, and
+    skipped is [(path, reason)] for files that could not be read or parsed.
+    Only ParseError and OSError are caught, so bugs in this code still fail loudly.
+    """
+    runs, skipped = [], []
+    for path in sorted(directory.glob("*.xml")):
+        try:
+            runs.append(parse_file(path))
+        except ET.ParseError as e:
+            skipped.append((path, f"not valid XML ({e})"))
+        except OSError as e:
+            skipped.append((path, f"could not read ({e})"))
+    return runs, skipped
