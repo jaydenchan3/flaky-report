@@ -33,3 +33,23 @@ def test_empty_file_raises_parse_error(tmp_path):
     empty.write_text("")
     with pytest.raises(ET.ParseError):
         parse_file(empty)
+
+
+def write_single_case(tmp_path, case_body):
+    path = tmp_path / "run.xml"
+    path.write_text(
+        '<testsuites><testsuite name="pytest">'
+        f'<testcase classname="tests.test_x" name="test_y">{case_body}</testcase>'
+        "</testsuite></testsuites>"
+    )
+    return path
+
+
+def test_system_out_alone_is_still_a_pass(tmp_path):
+    path = write_single_case(tmp_path, "<system-out>log output</system-out>")
+    assert parse_file(path) == [(("tests.test_x", "test_y"), "pass")]
+
+
+def test_skipped_element_is_a_skip(tmp_path):
+    path = write_single_case(tmp_path, '<skipped message="not on CI"/>')
+    assert parse_file(path) == [(("tests.test_x", "test_y"), "skip")]

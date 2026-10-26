@@ -8,7 +8,9 @@ Definition (the core judgment call; write it in the README):
 - Flaky = passed at least once AND failed at least once across runs
 - Always failing = broken, NOT flaky. Report it separately.
 - Test identity = classname + name
-- Pass = testcase with no child element; any child element = not a pass
+- Outcome per JUnit: <failure> or <error> = fail, <skipped> = skip, otherwise pass
+  (so <system-out> on a passing test doesn't create a false flaky)
+- Skips are not counted as a pass or a fail
 
 ## Not doing
 - HTML/dashboard output
@@ -30,7 +32,11 @@ So: parser + tests on the real files first.
 - end to end: running on runs/ gives the hand-counted table (5 flaky, 2 broken)
 
 ## README lines (save for later)
-- Out of scope: `<skipped>` and `<error>` tags don't appear in the data, so they aren't handled or tested.
+- `<skipped>`, `<error>` and `<system-out>` don't appear in the data. They are handled per the JUnit
+  spec, with small inline tests for <system-out> (still a pass) and <skipped> (a skip).
+- Fail-to-pass: the <system-out> and <skipped> tests failed against the old "any child = fail" rule.
+- "Worst first" = highest fail rate. Arguably a test closest to 50% is the least predictable.
+- A category resting on only one or two counted runs (see the skips column) is weak evidence.
 - Broken tests with changing error messages may be hiding instability (pagination_boundary and
   concurrent_edit_conflict fail 8/8 with five different messages).
 - 1 failure out of 8 is weak evidence; with this few runs, low flake rates should be read with caution.
