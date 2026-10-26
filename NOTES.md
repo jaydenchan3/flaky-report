@@ -42,3 +42,11 @@ So: parser + tests on the real files first.
 - 1 failure out of 8 is weak evidence; with this few runs, low flake rates should be read with caution.
 - Failures sharing the same messages (503, connection refused to localhost:5000, stale element)
   point to environment problems, so grouping by message is a "with more time" item.
+- Hand count vs tool: my first hand-count table said "the 9 others" stable; cross-checking against the
+  parser's 18-testcase count showed it was 10 (12 stable, 19 unique tests total). The hand count was wrong.
+
+## Expected end-to-end (from the XML, runs 1-8)
+- 19 tests: 5 flaky, 2 broken, 12 stable, 0 skipped
+- Flaky order: priors_appear 5/8, session_expires 3/8, then 12.5%: test_api.test_rate_limit_backoff,
+  test_report.test_report_requires_signature, test_worklist.test_filter_by_date_range
+- Broken: test_report.test_concurrent_edit_conflict, test_worklist.test_pagination_boundary

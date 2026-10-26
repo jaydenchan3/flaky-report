@@ -2,7 +2,7 @@ from collections import defaultdict
 from typing import NamedTuple, Optional
 
 
-class TestStats(NamedTuple):
+class Stats(NamedTuple):
     passes: int
     fails: int
     skips: int
@@ -11,7 +11,7 @@ class TestStats(NamedTuple):
 
 
 def classify(runs):
-    """Combine parse_file() results from many runs into {test_id: TestStats}.
+    """Combine parse_file() results from many runs into {test_id: Stats}.
 
     runs is one list of (test_id, outcome) per readable file. A test only counts the
     runs it appears in, and skips are counted separately from passes and fails.
@@ -34,11 +34,11 @@ def classify(runs):
             category = "skipped"
         counted = passes + fails
         fail_rate = fails / counted if counted else None
-        stats[test_id] = TestStats(passes, fails, skips, category, fail_rate)
+        stats[test_id] = Stats(passes, fails, skips, category, fail_rate)
     return stats
 
 
 def ranked(stats, category):
-    """Return [(test_id, TestStats)] in one category, highest fail rate first, ties by test_id."""
+    """Return [(test_id, Stats)] in one category, highest fail rate first, ties by test_id."""
     chosen = [(test_id, s) for test_id, s in stats.items() if s.category == category]
     return sorted(chosen, key=lambda item: (-(item[1].fail_rate or 0), item[0]))
